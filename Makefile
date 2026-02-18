@@ -6,6 +6,7 @@ PY := python3
 verify: policy lint tests
 
 policy:
+	$(PY) -m tools.bootstrap_artifacts
 	$(PY) -m tools.check_contract
 	$(PY) -m tools.check_policy
 
