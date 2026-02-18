@@ -14,7 +14,11 @@ AUDIT_PATH = ROOT / "audit" / "AUDIT_LOG.md"
 def _git_head() -> str:
     try:
         import subprocess
-        return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+        return subprocess.check_output(
+            ["git", "rev-parse", "HEAD"],
+            cwd=ROOT,
+            text=True,
+        ).strip()
     except Exception:
         return "(no-git)"
 

@@ -8,7 +8,12 @@
 Gates enforced and artifacts generated.
 
 ## What changed
-(diff summary unavailable)
+README.md             |   1 +
+ audit/AUDIT_LOG.md    |  16 ++++++++++++++++
+ dist/handoff.tgz      | Bin 2291 -> 2498 bytes
+ proof/PROOF_PACKET.md |   7 ++++++-
+ tools/append_audit.py |   6 +++++-
+ 5 files changed, 28 insertions(+), 2 deletions(-)
 
 ## Why safe
 - **Gates passed**: contract, policy, compileall, unittest
