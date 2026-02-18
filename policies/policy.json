@@ -1,0 +1,16 @@
+{
+  "hard_fail": {
+    "require_contract": true,
+    "require_proof_packet": true,
+    "require_audit_log": true
+  },
+  "soft_fail": {
+    "require_skill_allowlist_review": true
+  },
+  "paths": {
+    "contract_file": "contracts/contract.json",
+    "proof_packet": "proof/PROOF_PACKET.md",
+    "audit_log": "audit/AUDIT_LOG.md",
+    "skill_allowlist": "policies/allowlist.skills.json"
+  }
+}

@@ -1,0 +1,29 @@
+name: sovereignclaw-ci
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify
+        run: make verify
+
+      - name: Compile
+        run: make compile
+
+      - name: Upload proof packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: proof-packet
+          path: proof/PROOF_PACKET.md

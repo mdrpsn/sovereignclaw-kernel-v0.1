@@ -1,0 +1,46 @@
+{
+  "id": "SC-2026-02-18",
+  "title": "Install SovereignClaw v0.1 kernel gates",
+  "owner": "mike",
+  "objective_metric": "PR cycle time",
+  "target_delta": "Reduce rework loops via enforced gates",
+  "time_horizons": {
+    "h1": "This week: gates enforced in CI",
+    "h2": "30 days: proof packets become default receipts",
+    "h3": "90 days: productized install sprint repeatable"
+  },
+  "scope_in": [
+    "Contract validation in CI",
+    "Policy gate in CI",
+    "Proof packet generation",
+    "Audit log append"
+  ],
+  "scope_out": [
+    "Gateway exposure",
+    "Multi-tenant SaaS",
+    "Automated red-team lab"
+  ],
+  "acceptance": [
+    {"check": "Contract validates", "command": "python -m tools.check_contract"},
+    {"check": "Policy passes", "command": "python -m tools.check_policy"},
+    {"check": "Stdlib compile check", "command": "python -m compileall -q ."},
+    {"check": "Unit tests pass", "command": "python -m unittest -q"}
+  ],
+  "rollback": {
+    "steps": [
+      "Revert the merge commit",
+      "Restore previous CI workflow version"
+    ]
+  },
+  "evidence": {
+    "type": "proxy",
+    "binding": "Count PRs merged with proof packet present",
+    "expiry": "2026-03-31"
+  },
+  "assumptions": [
+    {"assumption": "GitHub Actions available", "expiry_date": "2026-03-31"}
+  ],
+  "dependencies": [
+    {"name": "GitHub Actions", "risk": "CI outage blocks merges", "unwind_deadline": "2026-06-30"}
+  ]
+}

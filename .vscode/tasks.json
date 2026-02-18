@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "SovereignClaw: Verify",
+      "type": "shell",
+      "command": "make verify",
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "SovereignClaw: Compile",
+      "type": "shell",
+      "command": "make compile",
+      "problemMatcher": [],
+      "group": "build"
+    }
+  ]
+}

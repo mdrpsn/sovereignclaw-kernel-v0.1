@@ -1,0 +1,93 @@
+{
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "owner",
+    "objective_metric",
+    "target_delta",
+    "scope_in",
+    "scope_out",
+    "acceptance",
+    "rollback",
+    "evidence",
+    "assumptions",
+    "dependencies"
+  ],
+  "properties": {
+    "id": {"type": "string", "minLength": 6},
+    "title": {"type": "string", "minLength": 4},
+    "owner": {"type": "string", "minLength": 2},
+    "objective_metric": {"type": "string", "minLength": 3},
+    "target_delta": {"type": "string", "minLength": 1},
+    "time_horizons": {
+      "type": "object",
+      "required": ["h1", "h2", "h3"],
+      "properties": {
+        "h1": {"type": "string"},
+        "h2": {"type": "string"},
+        "h3": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "scope_in": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "scope_out": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "acceptance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["check", "command"],
+        "properties": {
+          "check": {"type": "string"},
+          "command": {"type": "string"}
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "rollback": {
+      "type": "object",
+      "required": ["steps"],
+      "properties": {
+        "steps": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+      },
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["type", "binding", "expiry"],
+      "properties": {
+        "type": {"type": "string", "enum": ["telemetry", "proxy"]},
+        "binding": {"type": "string"},
+        "expiry": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["assumption", "expiry_date"],
+        "properties": {
+          "assumption": {"type": "string"},
+          "expiry_date": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "risk", "unwind_deadline"],
+        "properties": {
+          "name": {"type": "string"},
+          "risk": {"type": "string"},
+          "unwind_deadline": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
