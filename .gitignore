@@ -3,3 +3,8 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .venv/
+
+# generated artifacts
+dist/
+proof/PROOF_PACKET.md
+audit/AUDIT_LOG.md
